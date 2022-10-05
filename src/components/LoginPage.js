@@ -3,12 +3,22 @@ import UsersList from "./UsersList"
 
 export default function LoginPage() {
 
-    function handleSubmit(event) {
-        event.preventDefault()
-        const userCredential = {
+    const USERNAME = "username"
+    const PASSWORD = "password"
 
-        }
-        console.log(event.target.username.value)
+    const URL = "http://192.168.0.108:1323/login"
+
+    async function handleSubmit(event) {
+        event.preventDefault()
+        const formElement = event.target
+        
+        const userCredential = new FormData()
+        userCredential.append(USERNAME, formElement.username.value)
+        userCredential.append(PASSWORD, formElement.password.value)
+        const response = await fetch(URL, {
+            method: "post",
+            body: userCredential
+        })
     }
     
     return (
@@ -18,7 +28,9 @@ export default function LoginPage() {
                     <h1 className="title">登入</h1>
                     <div className="field">
                         <label htmlFor="username">帳號名稱</label>
+                        <select id="username" name="username">
                         <UsersList />
+                        </select> 
                     </div>
                     <div className="field">
                         <label htmlFor="password">密碼</label>

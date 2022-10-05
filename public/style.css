@@ -18,14 +18,11 @@
 }
 
 #login-container {
-    width: 450px;
+    width: 80%;
     height: 500px;
     display: flex;
     flex-direction: column;
-
-    /* align-items: center; */
-    /* justify-content: space-between; */
-
+    
     padding: 50px 60px;
     border-radius: 15px;
     box-shadow: -1px 1px 5px black;

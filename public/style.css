@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --field-line-height: 26px;
+}
+
+#login-page {
+    position: relative;
+    height: 100vh;
+    min-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-container {
+    width: 450px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+
+    /* align-items: center; */
+    /* justify-content: space-between; */
+
+    padding: 50px 60px;
+    border-radius: 15px;
+    box-shadow: -1px 1px 5px black;
+    font-size: var(--field-line-height);
+}
+
+.field {
+    margin-top: 20px;
+}
+
+.field input, .field select{
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    text-indent: 5px;
+    font-size: var(--field-line-height);
+}
+
+#login-container button {
+    width: 100%;
+    margin: 48px auto;
+    font-size: calc(var(--field-line-height) + 10%);
+    border-radius: 5px;
+}

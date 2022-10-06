@@ -1,4 +1,4 @@
-import { useState, useEffect, useDeferredValue } from "react"
+import { useState, useEffect } from "react"
 import UsersList from "./UsersList"
 
 export default function LoginPage() {
@@ -18,43 +18,52 @@ export default function LoginPage() {
         setInfoLegal((username !== "" && password !== "") ? true : false)
     }, [username, password])
 
+    const handleResponse = {
+        401: () => {
+            setErrorMessage("錯誤的帳號或密碼")
+        },
+
+        200: res => {
+            console.log(res)
+        },
+    }
+
     async function handleSubmit(event) {
         event.preventDefault()
-
-        const userCredential = username && password && 
-        (() => {
-            const formData = new FormData()
-            formData.append(USERNAME, username)
-            formData.append(PASSWORD, password)
-            return formData
-        })()
+        setErrorMessage("登入中...")
+        
+        const userCredential = new FormData()
+        userCredential.append(USERNAME, username)
+        userCredential.append(PASSWORD, password)
 
         const response = await fetch(URL, {
             method: "post",
             body: userCredential
         })
 
-        // console.log(response)
-        response.status === 401 && setErrorMessage("錯誤的帳號或密碼")
+        handleResponse[response.status](response)
+
     }
     
     return (
         <>
-            <form id="login-page" onSubmit={handleSubmit}>
-                <h1 className="title">登入</h1>
-                <div className="field">
-                    <label htmlFor={USERNAME}>帳號名稱</label>
-                    <select name={USERNAME} onChange={e => setUsername(e.target.value)}>
-                    <UsersList />
-                    </select> 
-                </div>
-                <div className="field">
-                    <label htmlFor={PASSWORD}>密碼</label>
-                    <input type="password" name={PASSWORD} onChange={e => setPassword(e.target.value)}/>
-                </div>
-                <div className="error-message field">{errorMessage}</div>
-                <button type="submit" disabled={!infoLegal}>登入</button>
-            </form>
+        <form id="login-page" onSubmit={handleSubmit}>
+            <h1 className="title">登入</h1>
+            <div className="field">
+                <label htmlFor={USERNAME}>帳號名稱</label>
+                <select name={USERNAME} 
+                        onChange={e => setUsername(e.target.value)}>
+                <UsersList />
+                </select> 
+            </div>
+            <div className="field">
+                <label htmlFor={PASSWORD}>密碼</label>
+                <input type="password" name={PASSWORD} 
+                        onChange={e => setPassword(e.target.value)}/>
+            </div>
+            <div className="error-message field">{errorMessage}</div>
+            <button type="submit" disabled={!infoLegal}>登入</button>
+        </form>
         </>
     )
 }

@@ -5,7 +5,7 @@
 }
 
 :root {
-    --field-line-height: 26px;
+    --field-line-height: 5vh;
 }
 
 #login-page {
@@ -13,24 +13,16 @@
     height: 100vh;
     min-width: 500px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#login-container {
-    width: 80%;
-    height: 500px;
-    display: flex;
     flex-direction: column;
-    
-    padding: 50px 60px;
-    border-radius: 15px;
-    box-shadow: -1px 1px 5px black;
+
+    padding: 60px 80px;
     font-size: var(--field-line-height);
+    /* align-items: center;
+    justify-content: center; */
 }
 
 .field {
-    margin-top: 20px;
+    margin-top: 24px;
 }
 
 .field input, .field select{
@@ -41,7 +33,7 @@
     font-size: var(--field-line-height);
 }
 
-#login-container button {
+#login-page button {
     width: 100%;
     margin: 48px auto;
     font-size: calc(var(--field-line-height) + 10%);

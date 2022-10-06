@@ -6,6 +6,7 @@
 
 :root {
     --field-line-height: 5vh;
+    --field-gap: 24px;
 }
 
 #login-page {
@@ -17,12 +18,10 @@
 
     padding: 60px 80px;
     font-size: var(--field-line-height);
-    /* align-items: center;
-    justify-content: center; */
 }
 
 .field {
-    margin-top: 24px;
+    margin-top: var(--field-gap);
 }
 
 .field input, .field select{
@@ -33,9 +32,14 @@
     font-size: var(--field-line-height);
 }
 
+.error-message {
+    align-self: center;
+    color: red;
+}
+
 #login-page button {
     width: 100%;
-    margin: 48px auto;
+    margin: var(--field-gap) auto;
     font-size: calc(var(--field-line-height) + 10%);
     border-radius: 5px;
 }

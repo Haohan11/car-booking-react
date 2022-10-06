@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useDeferredValue } from "react"
 import UsersList from "./UsersList"
 
 export default function LoginPage() {
@@ -11,6 +11,8 @@ export default function LoginPage() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [infoLegal, setInfoLegal] = useState(false)
+
+    const [errorMessage, setErrorMessage] = useState("")
 
     useEffect(() => {
         setInfoLegal((username !== "" && password !== "") ? true : false)
@@ -31,6 +33,9 @@ export default function LoginPage() {
             method: "post",
             body: userCredential
         })
+
+        // console.log(response)
+        response.status === 401 && setErrorMessage("錯誤的帳號或密碼")
     }
     
     return (
@@ -47,7 +52,8 @@ export default function LoginPage() {
                     <label htmlFor={PASSWORD}>密碼</label>
                     <input type="password" name={PASSWORD} onChange={e => setPassword(e.target.value)}/>
                 </div>
-                    <button type="submit" disabled={!infoLegal}>登入</button>
+                <div className="error-message field">{errorMessage}</div>
+                <button type="submit" disabled={!infoLegal}>登入</button>
             </form>
         </>
     )

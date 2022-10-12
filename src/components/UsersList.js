@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react"
 
-export default function() {
-    const URL = "http://192.168.0.108:1323/users"
+import { REACT_APP_BASE_URL, REACT_APP_PATH_USERS } from "../globalVariables"
+
+export default function UsersList() {
+    
+    const BASE_URL = REACT_APP_BASE_URL
+    const USERS_PATH = REACT_APP_PATH_USERS
+    const URL = `${BASE_URL}/${USERS_PATH}`
 
     const [users, setUsers] = useState()
     
@@ -25,7 +30,7 @@ export default function() {
                 <option key={index} value={user}>{user}</option>)
             }
             </> : 
-            <option value="">Users not found</option>
+            <option value="">--讀取使用者資料時發生錯誤--</option>
         }
         </>
     )

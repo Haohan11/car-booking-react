@@ -2,10 +2,12 @@ import { useState, useEffect } from "react"
 import UsersList from "./UsersList"
 
 import { REACT_APP_BASE_URL, REACT_APP_PATH_LOGIN, 
-         TOKEN_NAEM, TOKEN_SAVE_NAME } from "../globalVariables"
+         TOKEN_NAME, TOKEN_SAVE_NAME } from "../globalVariables"
 
 
-export default function LoginPage() {
+export default function LoginPage(props) {
+
+    const {Login} = props
     
     const BASE_URL = REACT_APP_BASE_URL
     const LOGIN_PATH = REACT_APP_PATH_LOGIN
@@ -15,7 +17,7 @@ export default function LoginPage() {
     const PASSWORD = "password"
 
     const TOKENNAME = TOKEN_SAVE_NAME
-    const TOKEN = TOKEN_NAEM
+    const TOKEN = TOKEN_NAME
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -28,13 +30,15 @@ export default function LoginPage() {
     }, [username, password])
 
     const handleResponse = {
-        401: () => {
+        401: (res) => {
+            console.log(res)
             setErrorMessage("錯誤的帳號或密碼")
         },
 
         200: async res => {
             const token = await res.json()
             localStorage.setItem(TOKENNAME, token[TOKEN])
+            Login()
         },
     }
 

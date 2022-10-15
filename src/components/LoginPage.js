@@ -31,13 +31,14 @@ export default function LoginPage(props) {
 
     const handleResponse = {
         401: (res) => {
-            console.log(res)
+            // console.log(res)
             setErrorMessage("錯誤的帳號或密碼")
         },
 
         200: async res => {
             const token = await res.json()
             localStorage.setItem(TOKENNAME, token[TOKEN])
+            // console.log(token)
             Login()
         },
     }
@@ -62,7 +63,7 @@ export default function LoginPage(props) {
     return (
         <>
         <form id="login-page" onSubmit={handleSubmit}>
-            <h1 className="title">登入</h1>
+            <h2 className="title">登入</h2>
             <div className="field">
                 <label htmlFor={USERNAME}>帳號名稱</label>
                 <select name={USERNAME} 
@@ -72,7 +73,7 @@ export default function LoginPage(props) {
             </div>
             <div className="field">
                 <label htmlFor={PASSWORD}>密碼</label>
-                <input type="password" name={PASSWORD} 
+                <input type="password" name={PASSWORD}
                         onChange={e => setPassword(e.target.value)}/>
             </div>
             <div className="error-message field">{errorMessage}</div>

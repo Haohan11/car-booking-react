@@ -14,15 +14,17 @@ export default function App() {
 
     async function Login() {
         const token = localStorage.getItem(tokenName)
-        if(token === null) return Logout()
-        
+        // console.log(token)
+
+        if(!token) return Logout()
+
         const response = await fetch(URL, {
             method: "get",
             headers: {
                 Authorization: `Bearer ${token}`
             }
         })
-        console.log(response)
+        // console.log(response)
     }
 
     function Logout() {
@@ -30,7 +32,7 @@ export default function App() {
     }
 
     useEffect(() => {
-        Login()
+        // Login()
     }, [])
 
     return (

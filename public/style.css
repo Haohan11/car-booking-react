@@ -5,11 +5,13 @@
 }
 
 :root {
-    --field-line-height: 5vh;
-    --field-gap: 24px;
+    --login-page-font-size: 5vh;
+    --field-gap: 4vh;
 }
 
 #login-page {
+    background-color: #333;
+    color: #eee;
     position: relative;
     height: 100vh;
     min-width: 500px;
@@ -17,19 +19,37 @@
     flex-direction: column;
 
     padding: 60px 80px;
-    font-size: var(--field-line-height);
+    font-size: var(--login-page-font-size);
+}
+
+.title {
+    color: white;
+    text-align: center;
 }
 
 .field {
     margin-top: var(--field-gap);
 }
 
+.field label {
+    display: block;
+    margin: 0 auto 1vh 1vh;
+    font-size: calc(var(--login-page-font-size) * 0.9);
+}
+
 .field input, .field select{
+    appearance: none;
+    outline: none;
+    color: #eee;
+    border: .2vh solid #eee;
     width: 100%;
-    border-radius: 5px;
-    padding: 5px;
-    text-indent: 5px;
-    font-size: var(--field-line-height);
+    padding: 2vh;
+
+    text-indent: 1vh;
+    line-height: var(--login-page-font-size);
+    font-size: calc(var(--login-page-font-size) * 0.9);
+    background-color: transparent;
+    border-radius: 1.5vh;
 }
 
 .error-message {
@@ -38,8 +58,21 @@
 }
 
 #login-page button {
+    appearance: none;
+    outline: none;
+    border: none;
+    box-shadow: none;
     width: 100%;
     margin: var(--field-gap) auto;
-    font-size: calc(var(--field-line-height) + 10%);
-    border-radius: 5px;
+    height: calc(var(--login-page-font-size) * 1.8);
+    font-size: var(--login-page-font-size);
+    border-radius: 2vh;
+
+    background-color: #eee;
+    color: #333;
+}
+
+#login-page button:disabled {
+    background-color: #666;
+    color: #444;
 }

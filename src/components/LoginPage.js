@@ -71,16 +71,16 @@ export default function LoginPage(props) {
             <form onSubmit={handleSubmit}>
                 <h2 className="title">登入</h2>
                 <div className="field">
-                    <label htmlFor={USERNAME}>帳號名稱</label>
-                    <select name={USERNAME} 
+                    <select name={USERNAME} required
                             onChange={e => setUsername(e.target.value)}>
                     <UsersList />
                     </select> 
+                    <label htmlFor={USERNAME}>帳號名稱</label>
                 </div>
                 <div className="field">
+                    <input type="password" name={PASSWORD} required
+                           onChange={e => setPassword(e.target.value)}/>
                     <label htmlFor={PASSWORD}>密碼</label>
-                    <input type="password" name={PASSWORD}
-                            onChange={e => setPassword(e.target.value)}/>
                 </div>
                 <div className="error-message field">{errorMessage}</div>
                 <button type="submit" disabled={!infoLegal}>登入</button>

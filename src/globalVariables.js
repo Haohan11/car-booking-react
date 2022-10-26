@@ -4,4 +4,4 @@ export const
     REACT_APP_PATH_USERS = 'users',
     REACT_APP_PATH_APPOINTMENT = 'booking/appointments',
     TOKEN_SAVE_NAME = 'car-booking-token',
-    TOKEN_NAME = 'keyyy'
+    TOKEN_NAME = 'token'

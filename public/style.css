@@ -5,37 +5,43 @@
 }
 
 :root {
-    --login-page-font-size: 3vh;
-    --header-height: 48vh;
+    --unit-font-size: 3vh;
+    --title-font-size: calc(var(--unit-font-size) * 1.6);
+    --light-background-color: hsla(217, 33%, 17%, 1);
+    --dark-background-color: hsla(237, 100%, 4%, 1);
 }
 
 .login-page {
     width: 100vw;
     height: 100vh;
     position: relative;
-    background-color: hsla(217, 33%, 17%, 1);
     overflow: hidden;
 }
 
-header {
+.login-page {
+    background-color: var(--light-background-color);
+}
+
+.login-page header {
     position: relative;
-
-    text-align: center;
-    font-size: calc(var(--login-page-font-size) * 1.6);
-    font-weight: bold;
-    font-family: sans-serif;
-
     color: white;
-
-    animation: fade-in .8s,
+    
+    animation: fade-in .8s, 
                landing .8s ease-out forwards;
-
+    
     z-index: 2;
 }
 
+header {
+    text-align: center;
+    font-size: var(--title-font-size);
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
 #car-icon {
-    width: calc(var(--login-page-font-size) * 1.6);
-    height: calc(var(--login-page-font-size) * 1.6);
+    width: var(--title-font-size);
+    height: var(--title-font-size);
     margin-right: 1vh;
     fill: white;
     vertical-align: text-top;
@@ -49,7 +55,7 @@ header {
     background-color: transparent;
 }
 
-form::before {
+.login-page form::before {
     content: '';
     position: absolute;
     top: calc(53.5vw * -1.414 * 0.5);
@@ -58,68 +64,67 @@ form::before {
     height: calc(107vw / 1.414);
     
     transform: rotate(45deg);
-
-    background: hsla(237, 100%, 4%, 1);
+    
+    background: var(--dark-background-color);
     border-radius: 8vw;
-
+    
     z-index: -1;
 }
 
-form {
+.login-page form {
     position: relative;
     display: flex;
     flex-direction: column;
-
+    
     height: 52vh;
     top: 96vh;
     padding: 0 4vh;
-    font-size: var(--login-page-font-size);
+    font-size: var(--unit-font-size);
     
-    background-color: hsla(237, 100%, 4%, 1);
+    background-color: var(--dark-background-color);
     color: white;
     
     animation: rise-up ease-out 1s forwards,
-               fade-in 1s;
-
+    fade-in 1s;
+    
     z-index: 1;
 }
 
-form .field {
+.login-page form .field {
     margin-bottom: 1vh;
 }
 
-form .field label {
+.login-page form .field label {
     position: relative;
     display: block;
     top: -5.6vh;
     left: 1vh;
-    height: calc(var(--login-page-font-size) * 1.5);
+    height: calc(var(--unit-font-size) * 1.5);
     color: hsla(215, 20%, 65%, 1);
-    font-size: calc(var(--login-page-font-size) * 0.9);
+    font-size: calc(var(--unit-font-size) * 0.9);
     pointer-events: none;
-
+    
     transition: ease-out .3s,
-                color 0s;
+    color 0s;
 }
 
-form .field input:valid + label, 
-form .field select:valid + label, 
-form .field input:focus + label, 
-form .field select:focus + label {
-    left: 0;
+.login-page form .field input:valid + label, 
+.login-page form .field select:valid + label, 
+.login-page form .field input:focus + label, 
+.login-page form .field select:focus + label {
     top: -9vh;
     color: white;
-    font-size: calc(var(--login-page-font-size) * 0.8);
+    font-size: calc(var(--unit-font-size) * 0.75);
 }
 
-form .field input:valid, 
-form .field select:valid, 
-form .field input:focus, 
-form .field select:focus {
+.login-page form .field input:valid, 
+.login-page form .field select:valid, 
+.login-page form .field input:focus, 
+.login-page form .field select:focus {
     border-bottom: .2vh solid white;
 }
 
-form .field input, form .field select {
+.login-page form .field input, .login-page form .field select {
     appearance: none;
     outline: none;
     
@@ -127,27 +132,28 @@ form .field input, form .field select {
     padding: 1.5vh;
     
     text-indent: 1vh;
-    font-size: calc(var(--login-page-font-size) * 0.9);
+    font-size: calc(var(--unit-font-size) * 0.9);
     
     background-color: transparent;
     color: white;
     border: none;
     border-bottom: .2vh solid hsla(215, 20%, 65%, 1);
-
+    
     transition: color .3s;
 }
 
-form .field select:not(:focus):not(:valid) {
+.login-page form .field select:not(:focus):not(:valid) {
     color: transparent;
 }
 
-form .error-message {
+.login-page form .error-message {
     align-self: center;
     color: red;
+    margin-top: -1vh;
     margin-bottom: 4vh;
 }
 
-form button {
+.login-page form button {
     appearance: none;
     outline: none;
     border: none;
@@ -155,8 +161,8 @@ form button {
     
     width: 100%;
     
-    height: calc(var(--login-page-font-size) * 2.1);
-    font-size: var(--login-page-font-size);
+    height: calc(var(--unit-font-size) * 2.1);
+    font-size: var(--unit-font-size);
     font-weight: bold;
     
     background-color: hsla(215, 25%, 34%, 1);
@@ -164,7 +170,7 @@ form button {
     border-radius: 0.4vh;
 }
 
-form button:disabled {
+.login-page form button:disabled {
     background-color: hsla(215, 25%, 27%, 1);
     color: grey;
 }
@@ -180,18 +186,39 @@ form button:disabled {
 
 @keyframes landing {
     0% {
-        transform: translateY(0vh);
+        translate: 0 0;
     }
     100% {
-        transform: translateY(12vh);
+        translate: 0 12vh;
     }
 }
 
 @keyframes rise-up {
     0% {
-        transform: translateY(0vh);
+        translate: 0 0;
     }
     100% {
-        transform: translateY(-48vh);
+        translate: 0 -48vh;
     }
+}
+
+.appoint-page {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--dark-background-color);
+    color: white;
+}
+
+.appoint-page header {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-background-color);
+}
+
+.appoint-page form {
+    height: 45vh;
+    border: 5px solid aqua;
+    translate: 0 100px;
 }

@@ -11,9 +11,15 @@ export default function UsersList() {
     const [users, setUsers] = useState()
     
     async function getUsers() {
-        const response = await fetch(URL)
-        const data = await response.json()
-        setUsers(data)
+
+        try {
+            const response = await fetch(URL)
+            const data = await response.json()
+            setUsers(data)
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
     
     useEffect(() => {

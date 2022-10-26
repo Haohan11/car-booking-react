@@ -14,30 +14,37 @@ export default function App() {
 
     async function Login() {
         const token = localStorage.getItem(tokenName)
-        // console.log(token)
 
         if(!token) return Logout()
 
-        const response = await fetch(URL, {
-            method: "get",
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-        // console.log(response)
+        try {
+            const response = await fetch(URL, {
+                method: "get",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            response.ok && setIdentified(true)
+        }
+        catch (error) {
+            console.log(error)
+        }
+
     }
 
     function Logout() {
+        // localStorage.removeItem(tokenName)
         setIdentified(false)
     }
 
     useEffect(() => {
-        // Login()
+        Login()
     }, [])
 
     return (
         <>
-        {identified ? <AppointPage /> : <LoginPage Login={Login}/>}
+        {/* <LoginPage /> */}
+        {identified ? <AppointPage /> : <LoginPage Login={Login} />}
         </>
     )
 }

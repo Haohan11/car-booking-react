@@ -43,8 +43,9 @@ export default function App() {
 
     return (
         <>
-        {/* <LoginPage /> */}
-        {identified ? <AppointPage /> : <LoginPage Login={Login} />}
+        <LoginPage />
+        {/* {identified ? <AppointPage /> : <LoginPage Login={Login} />} */}
+        {<AppointPage />}
         </>
     )
 }

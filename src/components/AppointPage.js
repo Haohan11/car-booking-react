@@ -1,36 +1,41 @@
-import { useRef, useEffect } from "react"
+import { useRef, useState, useEffect } from "react"
 import Header from "./Header"
+import Create from "./Create"
+import Search from "./Search"
+import Cancel from "./Cancel"
 
 export default function AppointPage() {
 
-    const actions = {
-        "CREATE": "create",
-        "SEARCH": "search",
-        "CANCEL": "cancel",
+    const actionsGate = {
+        "create": <Create />,
+        "search": <Search />,
+        "cancel": <Cancel />,
     }
+
+    const selectRef = useRef()
+    const [selectClicked, setSelectClicked] = useState(false)
+
+    const [currentAction, setCurrentAction] = useState("create")
+
+    useEffect(() => {
+        selectRef.current?.addEventListener("click", () => {
+            setSelectClicked(true)
+        }, {once: true})
+    }, [])
 
     return (
         <div className="appoint-page">
             <Header />
             <form>
                 <div className="field actions-select-wrapper">
-                    <select name="actions-select">
-                        <option id="choose-action">選擇動作</option>
-                        <option>預約車輛</option>
-                        <option>查詢預約</option>
-                        <option>取消預約</option>
+                    <select ref={selectRef} onChange={e => setCurrentAction(e.target.value)}>
+                        {selectClicked ? null : <option selected disabled>選擇動作</option>}
+                        <option value="create">預約車輛</option>
+                        <option value="search">查詢預約</option>
+                        <option value="cancel">取消預約</option>
                     </select>
-                    {/* <label htmlFor="action-select">選擇動作</label> */}
                 </div>
-                {/* <fieldset id={`${actions["SEARCH"]}-appoint`}>
-                    <h1>預約車輛</h1>
-                </fieldset>
-                <fieldset id="search-appoint">
-                    <h1>查詢預約</h1>
-                </fieldset>
-                <fieldset id="cancel-appoint">
-                    <h1>取消預約</h1>
-                </fieldset> */}
+                {actionsGate[`${currentAction}`]}
             </form>
         </div>
     )

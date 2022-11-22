@@ -127,6 +127,7 @@ header {
 
 input, select {
     appearance: none;
+    -webkit-appearance: none;
     outline: none;
 }
 
@@ -238,12 +239,16 @@ input, select {
     color: var(--unselected-color);
     border: none;
     border-radius: 0.6vh 0.6vh 0 0;
-    text-align: center;
+    padding-left: calc(50% - 6vh);
 }
 
 .appoint-page option {
     background-color: var(--light-background-color);
     color: var(--unselected-color);
+}
+
+.actions-select-wrapper {
+    text-align: center;
 }
 
 .appoint-page .actions-select-wrapper:active select {

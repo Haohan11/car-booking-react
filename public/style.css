@@ -7,6 +7,7 @@
 :root {
     --unit-font-size: 3vh;
     --title-font-size: calc(var(--unit-font-size) * 1.6);
+    --unselected-color: hsla(215, 20%, 65%, 1);
     --light-background-color: hsla(217, 33%, 17%, 1);
     --dark-background-color: hsla(237, 100%, 4%, 1);
 }
@@ -100,7 +101,7 @@ header {
     top: -5.6vh;
     left: 1vh;
     height: calc(var(--unit-font-size) * 1.5);
-    color: hsla(215, 20%, 65%, 1);
+    color: var(--unselected-color);
     font-size: calc(var(--unit-font-size) * 0.9);
     pointer-events: none;
     
@@ -124,26 +125,32 @@ header {
     border-bottom: .2vh solid white;
 }
 
-.login-page form .field input, .login-page form .field select {
+input, select {
     appearance: none;
     outline: none;
-    
+}
+
+.login-page form .field input, .login-page form .field select {    
     width: 100%;
     padding: 1.5vh;
-    
     text-indent: 1vh;
+    
     font-size: calc(var(--unit-font-size) * 0.9);
     
     background-color: transparent;
     color: white;
     border: none;
-    border-bottom: .2vh solid hsla(215, 20%, 65%, 1);
+    border-bottom: .2vh solid var(--unselected-color);
     
     transition: color .3s;
 }
 
 .login-page form .field select:not(:focus):not(:valid) {
     color: transparent;
+}
+
+.login-page option {
+    background-color: var(--light-background-color);
 }
 
 .login-page form .error-message {
@@ -218,7 +225,55 @@ header {
 }
 
 .appoint-page form {
-    height: 45vh;
-    border: 5px solid aqua;
-    translate: 0 100px;
+    padding: 4vh;
+    font-size: var(--unit-font-size);
+}
+
+.appoint-page select {
+    height: 5vh;
+    width: 100%;
+    font-size: var(--unit-font-size);
+
+    background-color: var(--light-background-color);
+    color: var(--unselected-color);
+    border: none;
+    border-radius: 0.6vh 0.6vh 0 0;
+    text-align: center;
+}
+
+.appoint-page option {
+    background-color: var(--light-background-color);
+    color: var(--unselected-color);
+}
+
+.appoint-page .actions-select-wrapper:active select {
+    background-color: var(--unselected-color);
+    color: var(--dark-background-color);
+}
+
+.appoint-page .actions-select-wrapper:active::after,
+.appoint-page .actions-select-wrapper:active::before {
+    border-top: 2.5vh solid var(--dark-background-color);
+}
+
+.appoint-page .actions-select-wrapper {
+    position: relative;
+}
+
+.appoint-page .actions-select-wrapper::before,
+.appoint-page .actions-select-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 1.5vh;
+    border-top: 2.5vh solid var(--unselected-color);
+    border-right: 1.5vh solid transparent;
+    border-left: 1.5vh solid transparent;
+}
+
+.appoint-page .actions-select-wrapper::before {
+    left: 2vh;
+}
+
+.appoint-page .actions-select-wrapper::after {
+    right: 2vh;
 }

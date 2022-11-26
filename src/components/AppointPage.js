@@ -1,5 +1,5 @@
 import { useState } from "react"
-import useOneEffect from "../hooks/useOneEffect"
+import useOneClick from "../hooks/useOneClick"
 import Header from "./Header"
 import Create from "./Create"
 import Search from "./Search"
@@ -13,7 +13,7 @@ export default function AppointPage() {
         "cancel": <Cancel />,
     }
 
-    const [selectRef, selectClicked] = useOneEffect()
+    const [selectRef, selectClicked] = useOneClick()
 
     const [currentAction, setCurrentAction] = useState("")
 

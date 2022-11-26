@@ -1,10 +1,10 @@
 import { useState } from "react"
-import useOneEffect from "../hooks/useOneEffect"
+import useOneClick from "../hooks/useOneClick"
 
 export default function Search() {
 
     const [filter, setFilter] = useState("")
-    const [selectRef, selectClicked] = useOneEffect()
+    const [selectRef, selectClicked] = useOneClick()
 
     return (
         <fieldset className="search-section">

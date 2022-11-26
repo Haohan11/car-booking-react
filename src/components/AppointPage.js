@@ -17,10 +17,14 @@ export default function AppointPage() {
 
     const [currentAction, setCurrentAction] = useState("")
 
+    function handleSubmit(event) {
+        event.preventDefault()
+    }
+
     return (
         <div className="appoint-page">
             <Header />
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="field actions-select-wrapper">
                     <select ref={selectRef} onChange={e => setCurrentAction(e.target.value)}>
                         {selectClicked ? null : <option value="" selected disabled>選擇動作</option>}

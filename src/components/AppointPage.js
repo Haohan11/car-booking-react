@@ -1,4 +1,5 @@
-import { useRef, useState, useEffect } from "react"
+import { useState } from "react"
+import useOneEffect from "../hooks/useOneEffect"
 import Header from "./Header"
 import Create from "./Create"
 import Search from "./Search"
@@ -12,16 +13,9 @@ export default function AppointPage() {
         "cancel": <Cancel />,
     }
 
-    const selectRef = useRef()
-    const [selectClicked, setSelectClicked] = useState(false)
+    const [selectRef, selectClicked] = useOneEffect()
 
     const [currentAction, setCurrentAction] = useState("")
-
-    useEffect(() => {
-        selectRef.current?.addEventListener("change", () => {
-            setSelectClicked(true)
-        }, {once: true})
-    }, [])
 
     return (
         <div className="appoint-page">

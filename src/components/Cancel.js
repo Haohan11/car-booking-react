@@ -2,6 +2,9 @@ import React from 'react'
 
 export default function Cancel() {
   return (
-    <div>Cancel</div>
+    <fieldset>
+        <input type="date" name="choose-date" required/>
+        <label htmlFor="choose-date">選擇日期</label>
+    </fieldset>
   )
 }

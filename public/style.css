@@ -176,6 +176,11 @@ button {
     font-weight: bold;
 }
 
+button:active {
+    background-color: var(--unselected-color);
+    color: var(--dark-background-color);
+}
+
 button:disabled {
     background-color: hsla(215, 25%, 27%, 1);
     color: grey;

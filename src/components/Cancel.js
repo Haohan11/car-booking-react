@@ -10,8 +10,8 @@ export default function Cancel() {
     
     return (
         <fieldset>
-            <input onChange={setButton} type="date" name="choose-date" required/>
-            <label htmlFor="choose-date">選擇日期</label>
+            <input onChange={setButton} type="date" required/>
+            <label>選擇日期</label>
             <button ref={buttonRef} disabled>取消預約</button>
         </fieldset>
     )

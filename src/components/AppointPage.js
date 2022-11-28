@@ -24,6 +24,9 @@ export default function AppointPage() {
     return (
         <div className="appoint-page">
             <Header />
+            <div className="user-info">
+                UserName
+            </div>
             <form onSubmit={handleSubmit}>
                 <div className="field actions-select-wrapper">
                     <select ref={selectRef} onChange={e => setCurrentAction(e.target.value)}>

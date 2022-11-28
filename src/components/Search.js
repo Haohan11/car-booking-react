@@ -25,12 +25,12 @@ export default function Search() {
                 <option value="filterByDateStart">此日期以後</option>
                 <option value="filterByDateEnd">此日期以前</option>
             </select>
-            <label>選擇篩選方式</label>
+            <label>篩選方式</label>
             {filter.includes("Date") ? <>
                 <input ref={inputRef} type="date" required
                     onChange={e => buttonRef.current.disabled = !e.target.validity.valid} 
                 />
-                <label>選擇日期</label>
+                <label>日期</label>
             </> : null}
             <button ref={buttonRef} disabled>查詢</button>
         </fieldset>

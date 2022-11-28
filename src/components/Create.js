@@ -11,7 +11,7 @@ export default function Create() {
     return (
         <fieldset>
             <input onChange={setButton} type="date" required/>
-            <label>選擇日期</label>
+            <label>日期</label>
             <button ref={buttonRef} disabled>預約</button>
         </fieldset>
     )

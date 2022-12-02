@@ -17,9 +17,8 @@ export default function Search() {
 
     return (
         <fieldset>
-            <select ref={selectRef} required 
-                onChange={e => setFilter(e.target.value)}
-            >
+            <select name="filter" ref={selectRef} required 
+                    onChange={e => setFilter(e.target.value)}>
                 {selectClicked ? null : <option value="" selected disabled></option>}
                 <option value="filterByUsername">依使用者</option>
                 <option value="filterByDateStart">此日期以後</option>
@@ -27,10 +26,9 @@ export default function Search() {
             </select>
             <label>篩選方式</label>
             {filter.includes("Date") ? <>
-                <input ref={inputRef} type="date" required
-                    onChange={e => buttonRef.current.disabled = !e.target.validity.valid} 
-                />
-                <label>日期</label>
+                <input name="date" ref={inputRef} type="date" required
+                       onChange={e => buttonRef.current.disabled = !e.target.validity.valid}/>
+                <label htmlFor="selectedDate">日期</label>
             </> : null}
             <button ref={buttonRef} disabled>查詢</button>
         </fieldset>

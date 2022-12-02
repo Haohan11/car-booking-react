@@ -10,8 +10,9 @@ export default function Create() {
 
     return (
         <fieldset>
-            <input onChange={setButton} type="date" required/>
-            <label>日期</label>
+            <input name="selectedDate" type="date" required 
+                   onChange={setButton}/>
+            <label htmlFor="selectedDate">日期</label>
             <button ref={buttonRef} disabled>預約</button>
         </fieldset>
     )

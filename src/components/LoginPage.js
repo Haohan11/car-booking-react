@@ -14,45 +14,36 @@ export default function LoginPage(props) {
     const {Login} = props
     
     const URL = `${BASE_URL}/${LOGIN_PATH}`
-
-    const USERNAME = "username"
-    const PASSWORD = "password"
     
     const usernameRef = useRef()
     const passwordRef = useRef() 
-
-    const [infoLegal, setInfoLegal] = useState(false)
+    const buttonRef = useRef()
     
-    const [errorMessage, setErrorMessage] = useState("")
+    const [message, setMessage] = useState("")
 
     const setButtonState = () => {
-        const username = usernameRef.current.value
-        const password = passwordRef.current.value
-        setInfoLegal((username !== "" && password !== "") ? true : false)
+        buttonRef.current.disabled = 
+            usernameRef.current.validity.valid && 
+            passwordRef.current.validity.valid ? false : true
     }
 
     const handleResponse = {
         401: () => {
-            setErrorMessage("錯誤的帳號或密碼")
+            setMessage("錯誤的帳號或密碼")
         },
 
         200: async res => {
             const token = await res.json()
             localStorage.setItem(TOKENNAME, token[TOKEN])
-            console.log(Login().json())
+            Login(token[TOKEN])
         },
     }
 
     async function handleSubmit(event) {
         event.preventDefault()
-        setErrorMessage("登入中...")
-        
-        const username = usernameRef.current.value
-        const password = passwordRef.current.value
+        setMessage("登入中...")
 
-        const userCredential = new FormData()
-        userCredential.append(USERNAME, username)
-        userCredential.append(PASSWORD, password)
+        const userCredential = new FormData(event.target)
 
         try {
             const response = await fetch(URL, {
@@ -72,19 +63,19 @@ export default function LoginPage(props) {
             <form onSubmit={handleSubmit}>
                 <h2 className="title">登入</h2>
                 <div className="field">
-                    <select name={USERNAME} required ref={usernameRef}
+                    <select name="username" required ref={usernameRef}
                             onChange={setButtonState}>
                     <UsersList />
                     </select> 
-                    <label htmlFor={USERNAME}>帳號名稱</label>
+                    <label htmlFor="username">帳號名稱</label>
                 </div>
                 <div className="field">
-                    <input type="password" name={PASSWORD} required ref={passwordRef}
+                    <input type="password" name="password" required ref={passwordRef}
                            onChange={setButtonState}/>
-                    <label htmlFor={PASSWORD}>密碼</label>
+                    <label htmlFor="password">密碼</label>
                 </div>
-                <div className="error-message field">{errorMessage}</div>
-                <button type="submit" disabled={!infoLegal}>登入</button>
+                <div className="error-message field">{message}</div>
+                <button ref={buttonRef} type="submit" disabled>登入</button>
             </form>
         </div>
     )

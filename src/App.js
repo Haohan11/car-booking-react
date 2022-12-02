@@ -12,10 +12,10 @@ export default function App() {
 
     const [identified, setIdentified] = useState(false)
 
-    async function Login() {
-        const token = localStorage.getItem(tokenName)
+    async function Login(token) {
+        token = token || localStorage.getItem(tokenName)
 
-        if(!token) return Logout()
+        if(token === null) return Logout()
 
         try {
             const response = await fetch(URL, {
@@ -43,8 +43,8 @@ export default function App() {
 
     return (
         <>
-        <LoginPage />
-        {/* {identified ? <AppointPage /> : <LoginPage Login={Login} />} */}
+        {/* {<LoginPage />} */}
+        {identified ? <AppointPage /> : <LoginPage Login={Login} />}
         {<AppointPage />}
         </>
     )

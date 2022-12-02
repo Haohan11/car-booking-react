@@ -136,7 +136,7 @@ input, select {
     padding: 1.5vh;
     text-indent: 1vh;
     
-    font-size: calc(var(--unit-font-size) * 0.9);
+    font-size: calc(var(--unit-font-size) * 1);
     
     background-color: transparent;
     color: transparent;
@@ -225,6 +225,8 @@ button:disabled {
     justify-content: center;
     align-items: center;
     z-index: 2;
+
+    animation: slide-down ease-out .8s forwards, fade-in .8s;
 }
 
 .appoint-page .user-info {
@@ -234,12 +236,14 @@ button:disabled {
     font-size: calc(var(--unit-font-size) * 1.2);
     padding-top: 8vh;
     z-index: 1;
+    
+    animation: slide-down ease-out .8s forwards, fade-in .8s;
 }
 
 .appoint-page .user-info::after {
     content: "";
     position: absolute;
-    top: calc(53.5vw * -1.414 * 0.5 - 4vh);
+    top: calc(53.5vw * -1.414 * 0.5 - 5vh);
     left: calc(50vw - calc(53.5vw / 1.414));
     width: calc(107vw / 1.414);
     height: calc(107vw / 1.414);
@@ -253,9 +257,11 @@ button:disabled {
 }
 
 .appoint-page form {
-    margin-top: 15vh;
+    margin-top: 17vh;
     padding: 4vh;
     font-size: var(--unit-font-size);
+
+    animation: slide-up ease-out 1s forwards, fade-in 1s;
 }
 
 .appoint-page .actions-select-wrapper select {
@@ -359,6 +365,26 @@ button:disabled {
 
 .appoint-page button {
     width: 100%;
-    height: calc(var(--unit-font-size) * 1.75);
+    height: calc(var(--unit-font-size) * 2);
     font-weight: bold;
+}
+
+@keyframes slide-down {
+    0% {
+        top: -30vh;
+    }
+    
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        translate: 0 40vh;
+    }
+
+    100% {
+        translate: 0 0;
+    }
 }

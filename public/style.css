@@ -258,59 +258,55 @@ button:disabled {
 
 .appoint-page form {
     margin-top: 17vh;
-    padding: 4vh;
     font-size: var(--unit-font-size);
-
+    
     animation: slide-up ease-out 1s forwards, fade-in 1s;
 }
 
-.appoint-page .actions-select-wrapper select {
-    height: 6vh;
-    width: 100%;
-    font-size: calc(var(--unit-font-size) * 1.1);
-
+.appoint-page table {
+    margin: auto;
+    padding: .5rem;
     background-color: var(--light-background-color);
-    color: var(--unselected-color);
+    border-radius: 20px;
+}
+
+.appoint-page .date {
+    appearance: none;
+    outline: none;
     border: none;
-    border-radius: 15px;
-    padding-left: calc(50% - 6.5vh);
-}
-
-.appoint-page option {
-    background-color: var(--light-background-color);
-    color: var(--unselected-color);
-}
-
-.appoint-page .actions-select-wrapper:active select {
-    background-color: var(--unselected-color);
-    color: var(--dark-background-color);
-}
-
-.appoint-page .actions-select-wrapper:active::after,
-.appoint-page .actions-select-wrapper:active::before {
-    border-top: 2.5vh solid var(--dark-background-color);
-}
-
-.appoint-page .actions-select-wrapper {
-    position: relative;
-}
-
-.appoint-page .actions-select-wrapper::before,
-.appoint-page .actions-select-wrapper::after {
-    content: '';
+    border-radius: 50%;
     position: absolute;
-    top: 1.75vh;
-    border-top: 2.5vh solid var(--unselected-color);
-    border-right: 1.5vh solid transparent;
-    border-left: 1.5vh solid transparent;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    font-size: calc(var(--unit-font-size) * 0.9);
 }
 
-.appoint-page .actions-select-wrapper::before {
-    left: 2vh;
+.appoint-page .date:checked {
+    background-color: hsla(215, 25%, 27%, 1);
 }
 
-.appoint-page .actions-select-wrapper::after {
-    right: 2vh;
+.appoint-page td label {
+    position: relative;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    text-align: center;
+    pointer-events: none;
+
+    color: white;
+}
+
+.appoint-page tr {
+    height: 7.5rem;
+}
+
+.appoint-page td {
+    width: 7.5rem;
+    font-size: calc(var(--unit-font-size) * 0.9);
+    position: relative;
 }
 
 .appoint-page fieldset {
@@ -318,21 +314,7 @@ button:disabled {
     padding-top: 8rem;
 }
 
-.appoint-page label {
-    position: relative;
-    display: block;
-    top: -6.5vh;
-    left: 1.2rem;
-    height: calc(var(--unit-font-size) * 1.5);
-    background: transparent;
-    color: var(--unselected-color);
-    pointer-events: none;
-    transition: ease-out .3s, color 0s;
-    margin: 1rem 0;
-}
-
-.appoint-page input[type="date"],
-.appoint-page fieldset select {
+.appoint-page input[type="date"] {
     height: 5vh;
     width: 100%;
     font-size: var(--unit-font-size);
@@ -347,17 +329,13 @@ button:disabled {
 }
 
 .appoint-page input[type="date"]:focus,
-.appoint-page input[type="date"]:valid,
-.appoint-page fieldset select:focus,
-.appoint-page fieldset select:valid {
+.appoint-page input[type="date"]:valid {
     color: white;
     border-color: white;
 }
 
 .appoint-page input[type="date"]:focus + label, 
-.appoint-page input[type="date"]:valid + label,
-.appoint-page fieldset select:focus + label, 
-.appoint-page fieldset select:valid + label {
+.appoint-page input[type="date"]:valid + label {
     top: -9vh;
     font-size: calc(var(--unit-font-size) * 0.75);
     color: white;
@@ -376,15 +354,5 @@ button:disabled {
     
     100% {
         top: 0;
-    }
-}
-
-@keyframes slide-up {
-    0% {
-        translate: 0 40vh;
-    }
-
-    100% {
-        translate: 0 0;
     }
 }

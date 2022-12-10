@@ -1,4 +1,5 @@
 import Header from "./Header"
+import Calendar from "./Calender"
 
 export default function AppointPage() {
 
@@ -9,8 +10,7 @@ export default function AppointPage() {
                 UserName
             </div>
             <form>
-                <div>
-                </div>
+                <Calendar />
             </form>
         </div>
     )

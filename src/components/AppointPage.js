@@ -1,5 +1,6 @@
 import Header from "./Header"
 import Calendar from "./Calender"
+import Filters from "./Filters"
 
 export default function AppointPage() {
 
@@ -10,6 +11,7 @@ export default function AppointPage() {
                 UserName
             </div>
             <form>
+                <Filters />
                 <Calendar />
             </form>
         </div>

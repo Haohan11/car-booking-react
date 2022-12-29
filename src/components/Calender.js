@@ -1,11 +1,11 @@
 export default function Calendar() {
 
-    const tableData = <td>
+    const tableData = index => <td>
                         <input name="date" className="date" type="radio"/>
-                        <label>5</label>
+                        <label>{index}</label>
                       </td>
-    const tableRow = <tr>{Array(7).fill(tableData)}</tr>
-    
+    const tableRow = <tr>{Array.from(Array(7), (element, index) => element = tableData(index))}</tr>
+
     return (
         <table>
             {Array(5).fill(tableRow)}

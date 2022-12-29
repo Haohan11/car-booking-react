@@ -14,12 +14,12 @@
 
 .login-page, .appoint-page {
     width: 100vw;
-    height: 100vh;
     position: relative;
     overflow: hidden;
 }
 
 .login-page {
+    height: 100vh;
     background-color: var(--light-background-color);
 }
 
@@ -257,17 +257,86 @@ button:disabled {
 }
 
 .appoint-page form {
-    margin-top: 17vh;
+    margin: 20vh 0 15vh 0;
     font-size: var(--unit-font-size);
     
     animation: slide-up ease-out 1s forwards, fade-in 1s;
 }
 
-.appoint-page table {
-    margin: auto;
-    padding: .5rem;
+.appoint-page table, .appoint-page .filters {
+    margin: 2rem auto;
+    width: 90%;
     background-color: var(--light-background-color);
     border-radius: 20px;
+}
+
+.appoint-page table {
+    padding: .5rem;
+}
+
+.appoint-page .filters {
+    padding: 2.5rem;
+}
+
+.appoint-page .filter {
+    position: relative;
+    height: calc(var(--unit-font-size) * 2);
+}
+
+.appoint-page .filter:not(:first-child) {
+    margin-top: 4vh;
+}
+
+.appoint-page form .filters label {
+    position: relative;
+    display: block;
+    top: -4.5vh;
+    left: 1vh;
+    height: calc(var(--unit-font-size) * 1.5);
+    color: var(--unselected-color);
+    font-size: calc(var(--unit-font-size) * 0.9);
+    pointer-events: none;
+
+}
+
+.appoint-page form .filters input[type="date"] + label {
+    transition: ease-out .3s, color .5s;
+}
+
+input[type="checkbox"] + label {
+    text-indent: 4rem;
+}
+
+input[type="checkbox"] + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 3rem;
+    width: 3rem;
+    background-color: white;
+    margin-top: 0.5rem;
+}
+
+input[type="checkbox"] + label:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 0.5rem;
+    left: 3px;
+    rotate: -45deg;
+    height: 1rem;
+    width: 2rem;
+    border-left: 0.5rem solid var(--dark-background-color);
+    border-bottom: 0.5rem solid var(--dark-background-color);
+    margin-top: 0.5rem;
+}
+
+.appoint-page input[type="checkbox"]:checked + label {
+    color: white;
+}
+
+.appoint-page input[type="checkbox"]:checked + label:after {
+    display: block;
 }
 
 .appoint-page .date {
@@ -276,15 +345,18 @@ button:disabled {
     border: none;
     border-radius: 50%;
     position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
     background-color: transparent;
     font-size: calc(var(--unit-font-size) * 0.9);
+
+    touch-action: manipulation;
 }
 
 .appoint-page .date:checked {
-    background-color: hsla(215, 25%, 27%, 1);
+    background-color: hsla(215, 25%, 37%, 1);
 }
 
 .appoint-page td label {
@@ -304,28 +376,26 @@ button:disabled {
 }
 
 .appoint-page td {
-    width: 7.5rem;
+    width: calc(100% / 7);
     font-size: calc(var(--unit-font-size) * 0.9);
     position: relative;
 }
 
-.appoint-page fieldset {
-    border: none;
-    padding-top: 8rem;
-}
-
-.appoint-page input[type="date"] {
-    height: 5vh;
+.appoint-page input[type="date"], .appoint-page input[type="checkbox"] {
     width: 100%;
+    height: calc(var(--unit-font-size) * 1.75);
     font-size: var(--unit-font-size);
     color: transparent;
     background-color: transparent;
-    text-indent: 3rem;
-    border-radius: 0;
+    
     border: none;
-    border-bottom: .2vh solid var(--unselected-color);
-
+    border-radius: 0;
     transition: color .3s;
+}
+
+.appoint-page input[type="date"] {
+    text-indent: 12rem;
+    border-bottom: .2vh solid var(--unselected-color);
 }
 
 .appoint-page input[type="date"]:focus,
@@ -336,7 +406,7 @@ button:disabled {
 
 .appoint-page input[type="date"]:focus + label, 
 .appoint-page input[type="date"]:valid + label {
-    top: -9vh;
+    top: -8vh;
     font-size: calc(var(--unit-font-size) * 0.75);
     color: white;
 }
@@ -354,5 +424,14 @@ button:disabled {
     
     100% {
         top: 0;
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        translate: 0 40vh;
+    }
+    100% {
+        translate: 0 0;
     }
 }

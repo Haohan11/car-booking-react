@@ -1,5 +1,5 @@
 import Header from "./Header"
-import Calendar from "./Calender"
+import Calendar from "./Calendar"
 import Filters from "./Filters"
 
 export default function AppointPage() {

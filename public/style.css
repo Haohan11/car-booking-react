@@ -264,7 +264,7 @@ button:disabled {
 }
 
 .appoint-page table, .appoint-page .filters {
-    margin: 2rem auto;
+    margin: 4rem auto;
     width: 90%;
     background-color: var(--light-background-color);
     border-radius: 20px;
@@ -362,9 +362,6 @@ input[type="checkbox"] + label:after {
 .appoint-page td label {
     position: relative;
     display: block;
-    top: 0;
-    left: 0;
-    height: 100%;
     text-align: center;
     pointer-events: none;
 
@@ -372,7 +369,7 @@ input[type="checkbox"] + label:after {
 }
 
 .appoint-page tr {
-    height: 7.5rem;
+    height: calc((90vw - 2rem) / 7);
 }
 
 .appoint-page td {
@@ -394,7 +391,7 @@ input[type="checkbox"] + label:after {
 }
 
 .appoint-page input[type="date"] {
-    text-indent: 12rem;
+    text-indent: 8rem;
     border-bottom: .2vh solid var(--unselected-color);
 }
 

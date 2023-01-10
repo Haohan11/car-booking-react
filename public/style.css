@@ -5,7 +5,7 @@
 }
 
 :root {
-    --unit-font-size: 3vh;
+    --unit-font-size: 3rem;
     --title-font-size: calc(var(--unit-font-size) * 1.6);
     --unselected-color: hsla(215, 20%, 65%, 1);
     --light-background-color: hsla(217, 33%, 17%, 1);
@@ -163,25 +163,24 @@ button {
     outline: none;
     border: none;
     box-shadow: none;
-    font-size: var(--unit-font-size);
-
-    background-color: hsla(215, 25%, 34%, 1);
-    color: white;
-    border-radius: 0.4vh;
 }
 
 .login-page form button {
     width: 100%;
     height: calc(var(--unit-font-size) * 2.1);
+    background-color: hsla(215, 25%, 34%, 1);
+    color: white;
+    font-size: var(--unit-font-size);
     font-weight: bold;
+    border-radius: 0.4vh;
 }
 
-button:active {
+.login-page button:active {
     background-color: var(--unselected-color);
     color: var(--dark-background-color);
 }
 
-button:disabled {
+.login-page button:disabled {
     background-color: hsla(215, 25%, 27%, 1);
     color: grey;
 }
@@ -243,7 +242,7 @@ button:disabled {
 .appoint-page .user-info::after {
     content: "";
     position: absolute;
-    top: calc(53.5vw * -1.414 * 0.5 - 5vh);
+    top: calc(53.5vw * -1.414 * 0.5 - 5rem);
     left: calc(50vw - calc(53.5vw / 1.414));
     width: calc(107vw / 1.414);
     height: calc(107vw / 1.414);
@@ -251,7 +250,7 @@ button:disabled {
     transform: rotate(45deg);
     
     background-color: var(--light-background-color);
-    border-radius: 8vw;
+    border-radius: 4rem;
     
     z-index: -1;
 }
@@ -267,7 +266,7 @@ button:disabled {
     margin: 4rem auto;
     width: 90%;
     background-color: var(--light-background-color);
-    border-radius: 20px;
+    border-radius: 1.5rem;
 }
 
 .appoint-page table {
@@ -283,24 +282,20 @@ button:disabled {
     height: calc(var(--unit-font-size) * 2);
 }
 
-.appoint-page .filter:not(:first-child) {
-    margin-top: 4vh;
+.appoint-page .filter:last-child {
+    margin-top: 1.5rem;
 }
 
 .appoint-page form .filters label {
     position: relative;
     display: block;
-    top: -4.5vh;
-    left: 1vh;
+    top: -4.5rem;
+    left: 1rem;
     height: calc(var(--unit-font-size) * 1.5);
     color: var(--unselected-color);
     font-size: calc(var(--unit-font-size) * 0.9);
     pointer-events: none;
 
-}
-
-.appoint-page form .filters input[type="date"] + label {
-    transition: ease-out .3s, color .5s;
 }
 
 input[type="checkbox"] + label {
@@ -313,8 +308,8 @@ input[type="checkbox"] + label:before {
     left: 0;
     height: 3rem;
     width: 3rem;
-    background-color: white;
-    margin-top: 0.5rem;
+    background-color: var(--unselected-color);
+    margin-top: 0.45rem;
 }
 
 input[type="checkbox"] + label:after {
@@ -337,6 +332,10 @@ input[type="checkbox"] + label:after {
 
 .appoint-page input[type="checkbox"]:checked + label:after {
     display: block;
+}
+
+.appoint-page input[type="checkbox"]:checked + label:before {
+    background-color: white;
 }
 
 .appoint-page .date {
@@ -372,13 +371,20 @@ input[type="checkbox"] + label:after {
     height: calc((90vw - 2rem) / 7);
 }
 
+.appoint-page th {
+    font-size: var(--unit-font-size);
+    color: white;
+}
+
 .appoint-page td {
     width: calc(100% / 7);
     font-size: calc(var(--unit-font-size) * 0.9);
     position: relative;
 }
 
-.appoint-page input[type="date"], .appoint-page input[type="checkbox"] {
+.appoint-page input[type="date"], 
+.appoint-page input[type="checkbox"],
+.appoint-page input[type="month"] {
     width: 100%;
     height: calc(var(--unit-font-size) * 1.75);
     font-size: var(--unit-font-size);
@@ -387,12 +393,16 @@ input[type="checkbox"] + label:after {
     
     border: none;
     border-radius: 0;
-    transition: color .3s;
 }
 
 .appoint-page input[type="date"] {
-    text-indent: 8rem;
-    border-bottom: .2vh solid var(--unselected-color);
+    padding-left: 55%;
+    border-bottom: .2rem solid var(--unselected-color);
+}
+
+.appoint-page input[type="month"] {
+    padding-left: calc(50% - 7.75rem);
+    color: white;
 }
 
 .appoint-page input[type="date"]:focus,
@@ -403,15 +413,43 @@ input[type="checkbox"] + label:after {
 
 .appoint-page input[type="date"]:focus + label, 
 .appoint-page input[type="date"]:valid + label {
-    top: -8vh;
-    font-size: calc(var(--unit-font-size) * 0.75);
     color: white;
 }
 
-.appoint-page button {
-    width: 100%;
-    height: calc(var(--unit-font-size) * 2);
-    font-weight: bold;
+.appoint-page table button {
+    width: calc((90vw - 2rem) / 7 * 0.8);
+    height: calc((90vw - 2rem) / 7 * 0.8);
+    font-size: var(--unit-font-size);
+    touch-action: manipulation;
+    background-color: transparent;
+    position: relative;
+    border-radius: 1rem;
+}
+
+.appoint-page table button:active {
+    background-color: var(--unselected-color);
+}
+
+.appoint-page table th:first-child button:after,
+.appoint-page table th:last-child button:after {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    border-left: 0.5rem solid white;
+    border-bottom: 0.5rem solid white;
+}
+
+.appoint-page table th:first-child button:after {
+    right: 25%;
+    top: 30%;
+    rotate: 45deg;
+}
+
+.appoint-page table th:last-child button:after {
+    left: 25%;
+    top: 30%;
+    rotate: 225deg;
 }
 
 @keyframes slide-down {
